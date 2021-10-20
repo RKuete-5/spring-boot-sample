@@ -32,11 +32,11 @@ pipeline {
     }
     
     stage ("scan and build branch") {
-        tools {
-          maven "M3"
-        }
         parallel {
             stage("build and test for features branch") {
+                 tools {
+                    maven "M3"
+                 }
                  when {
                         not {
                             anyOf {
@@ -52,6 +52,9 @@ pipeline {
             }
 
             stage("build and test for dev branch") {
+                 tools {
+                     maven "M3"
+                }
                 when {
                     branch 'dev'
                 }
@@ -62,6 +65,9 @@ pipeline {
             }
 
             stage("build and test for master branch") {
+                 tools {
+                     maven "M3"
+                }
                 when {
                     branch 'master'
                 }
