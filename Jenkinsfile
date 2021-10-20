@@ -23,13 +23,10 @@ pipeline {
             script {
                 def scannerHome = tool name: 'SonarQube';
                     withSonarQubeEnv('SonarQube') {
-                        sh "${tool("SonarQube")}/bin/sonar-scanner \
-                        -Dsonar.sources=. \
-                        -Dsonar.ts.coverage.lcovReportPath=coverage/lcov.info \
-                        -Dsonar.host.url=https://sonarqubes.tools.beopenit.com \
-                        -Dsonar.login=${TOKEN} \
-                        -Dsonar.projectKey=nappyme" 
-                       sh 'mvn clean package sonar:sonar'
+                        sh "mvn sonar:sonar \
+                            -Dsonar.projectKey=nappyme \
+                            -Dsonar.host.url=https://sonarqubes.tools.beopenit.com \
+                            -Dsonar.login=6bbc71b0aa564e080ac9980eae2b3d7b565acf72" 
                     }
                 }
         }
