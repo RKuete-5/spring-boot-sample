@@ -29,6 +29,7 @@ pipeline {
                         -Dsonar.host.url=https://sonarqubes.tools.beopenit.com \
                         -Dsonar.login=${TOKEN} \
                         -Dsonar.projectKey=nappyme" 
+                       sh 'mvn clean package sonar:sonar'
                     }
                 }
         }
